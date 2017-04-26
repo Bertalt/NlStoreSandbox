@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/LoginTheme"
-    tools:context="edu.bertalt.nlsandbox.LoginActivity">
+    android:id="@+id/auth_activity">
 
     <LinearLayout
         android:layout_width="match_parent"

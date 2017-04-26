@@ -53,10 +53,10 @@ dependencies {
     //Exandable view
 
     //Other
-
-
     compile 'com.android.support.constraint:constraint-layout:1.0.0'
     compile 'net.cachapa.expandablelayout:expandablelayout:2.8'
+    // Realm
+    compile 'io.realm:android-adapters:2.0.0'
     testCompile 'junit:junit:4.12'
 }
 
