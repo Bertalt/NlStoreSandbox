@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="edu.bertalt.nlsandbox.ui.main.MainActivity">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -27,26 +27,30 @@
                     android:layout_height="match_parent">
 
                     <ImageButton
-                        style="@style/Widget.AppCompat.ActionButton"
                         android:id="@+id/main_shopping_icon"
-                        android:layout_centerVertical="true"
+                        style="@style/Widget.AppCompat.ActionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         app:srcCompat="@drawable/ic_shopping_cart_black_24dp" />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
 
-            <View
+            <!--<View
 
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:layout_below="@id/main_toolbar"
-                android:background="@drawable/toolbar_shadow" />
+                android:background="@drawable/toolbar_shadow" />-->
         </RelativeLayout>
-    </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <!--<android.support.design.widget.FloatingActionButton-->
     <!--android:id="@+id/fab"-->

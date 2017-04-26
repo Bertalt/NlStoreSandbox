@@ -7,19 +7,20 @@ object NlRealmHelper {
 
     fun insertProducts(insertArray: List<ProductRealm>) {
         val db = NlRealmBuilder.getRealm()
-        insertArray.forEach {
-            db.copyToRealmOrUpdate(it)
+        db.executeTransaction {
+            insertArray.forEach {
+                db.copyToRealmOrUpdate(it)
+            }
         }
-        db.also {
-            if (db.isClosed.not())
-                db.close()
-        }
+                .also {
+                    if (db.isClosed.not())
+                        db.close()
+                }
     }
 
     fun getAllProducts(): RealmResults<ProductRealm> {
-        NlRealmBuilder.getRealm().use {
-            return it.where(ProductRealm::class.java).findAll()
-        }
+        return NlRealmBuilder.getRealm().where(ProductRealm::class.java).findAll()
+
     }
 
 }

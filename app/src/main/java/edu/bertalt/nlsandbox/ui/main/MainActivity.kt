@@ -7,11 +7,15 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
 import edu.bertalt.nlsandbox.R
+import edu.bertalt.nlsandbox.storage.realm.NlRealmHelper
+import edu.bertalt.nlsandbox.ui.main.model.ProductListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     companion object {
@@ -30,12 +34,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         } else {
             super.onBackPressed()
         }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -77,7 +75,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    fun setupLayouts(){
+    fun setupLayouts() {
+        setSupportActionBar(main_toolbar)
+        supportActionBar?.elevation = 0F
+        supportActionBar?.title = ""
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, main_toolbar,
                 R.string.navigation_drawer_open,
@@ -88,6 +89,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val navigationView = findViewById(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
-        main_shopping_icon.setOnClickListener {  }
+        main_shopping_icon.setOnClickListener { }
+        val list = NlRealmHelper.getAllProducts()
+        main_product_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        main_product_recycler.adapter = ProductListAdapter(list)
+        main_product_recycler.setHasFixedSize(true)
+
     }
 }
