@@ -8,7 +8,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.view.Menu
 import android.view.MenuItem
 import edu.bertalt.nlsandbox.R
 import edu.bertalt.nlsandbox.storage.realm.NlRealmHelper
@@ -93,7 +92,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val list = NlRealmHelper.getAllProducts()
         main_product_recycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         main_product_recycler.adapter = ProductListAdapter(list)
-        main_product_recycler.setHasFixedSize(true)
-
     }
 }

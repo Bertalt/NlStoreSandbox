@@ -11,7 +11,7 @@ public class ProductRealm extends RealmObject {
     private  Long id;
     private String alias;
     private Boolean isFavorite;
-    private Integer amountInBasket;
+    private Integer amountInBasket = 0;
 
     public Long getId() {
         return id;
